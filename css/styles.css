@@ -456,6 +456,9 @@ img {
     right: 0;
     pointer-events: none;
 }
+#drag-icon.disable {
+    display: none;
+}
 
 .image-container {
     position: relative;
