@@ -456,8 +456,8 @@ img {
     right: 0;
     pointer-events: none;
 }
-#drag-icon.disable {
-    display: none;
+#drag-icon.disabled {
+    display: none !important;
 }
 
 .image-container {
