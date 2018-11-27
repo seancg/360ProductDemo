@@ -297,6 +297,8 @@
 
             function openProduct(evt) {
                 // console.log(`openProduct(${evt.target.innerHTML})`);
+                dragIcon.classList.remove('disabled');
+
                 var productNum = evt.target.innerHTML;
                 var product = 'product' + productNum;
                 var productImagewrap = 'image-wrap' + productNum;
