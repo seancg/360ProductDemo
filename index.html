@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ATP Learning Solutions - 360 Product Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+    <link rel="stylesheet" href="css/styles.css" media="screen, projection">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|PT+Sans|Roboto" rel="stylesheet">
+    <!--Fixes for Internet Explorer CSS3 and HTML5-->
+    <!--[if gte IE 9]>
+    <style type="text/css">
+        .gradient {
+            filter: none!important;
+        }
+    </style>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script>
+        'article aside footer header nav section time'.replace(/\w+/g, function(n) {
+            document.createElement(n)
+        })
+    </script>
+    <![endif]-->
+    <!-- BEGIN GOOGLE ANALYTICS - last updated 05/05/2016 -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-24414646-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- END GOOGLE ANALYTICS -->
+</head>
+
+<body>
+    <!--Start of Landing Page Header-->
+    <header id="header">
+        <div class="row">
+            <!--Start of Header Title-->
+            <div id="title">
+                <h3>INTERACTIVE</h3>
+                <h1>360 PRODUCT MODELS</h1>
+            </div>
+            <!--End of Header Title-->
+            <!--Start of Header Logo-->
+            <div id="logo" class="eight columns">
+                <a href="http://www.atplearningpromo.com/">
+                    <img src="images/atpls-logo.png" alt="ATP" title="ATP Learning Solutions" width="158">
+                </a>
+            </div>
+            <!--End of Header Logo-->
+        </div>
+    </header>
+    <!--End of Landing Page Header-->
+
+    <!--Start of Main Content-->
+    <section id="main" role="main">
+        <div class="row">
+            <div class="intro column five">
+                <p>This is your product.</p>
+                <ul>
+                    <li>Customer engagement</li>
+                    <li>Web site sales</li>
+                    <li>Print-quality &amp; high resolution images</li>
+                    <li>Optimized 3D models for Web delivery</li>
+                    <li>Educational training</li>
+                </ul>
+            </div>
+            <div id="image-wrap" class="image-wrap column seven">
+                <div class="image-container">
+                    <iframe style="border:0px; max-width: 100%;" marginheight="0" marginwidth="0" scrolling="no" src="products/klein/iframe.html" allowfullscreen
+                        width="800" height="597">
+                        <p>Your browser does not support iframes.</p>
+                    </iframe>
+                </div>
+                <div class="credit">Klein Tools</div>
+                <div id="drag-icon"></div>
+            </div>
+        </div>
+    </section>
+    <!--End of Main Content-->
+    <!--Start of Landing Page Footer-->
+    <div class="row">
+        <footer role="contentinfo">
+            <div id="page_footer">
+                <p>
+                    &copy; 2017 by ATP Learning Solutions
+                    <br> All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
+    <!--End of Landing Page Footer-->
+
+    <!-- Included JS Files -->
+    <script>
+        window.onload = function () {
+
+            var isTouchSupported = 'ontouchstart' in window;
+            var startEvent = isTouchSupported ? 'touchstart' : 'mouseover';
+            console.log(startEvent);
+            var moveEvent = isTouchSupported ? 'touchmove' : 'mousemove';
+            var endEvent = isTouchSupported ? 'touchend' : 'mouseout';
+
+            var imageWrap = document.getElementById('image-wrap');
+            var spinIcon = document.getElementById('drag-icon');
+
+            imageWrap.addEventListener(startEvent, function () {
+                spinIcon.style.display = "none";
+                console.log(startEvent);
+            }, false);
+
+            imageWrap.addEventListener(endEvent, function () {
+                spinIcon.style.display = "block";
+                console.log(endEvent);
+            }, false);
+
+        };
+    </script>
+
+</body>
+
+</html>
