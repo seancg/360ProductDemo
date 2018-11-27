@@ -28,6 +28,7 @@ li,
 li p {
     margin: 0;
     padding: 0;
+
     /* list-style: none; */
 }
 
@@ -406,20 +407,26 @@ img {
 
 #main {
     background-color: #EEE;
+    position: relative;
 }
 
 #main .row {
-    padding: 20px 0;
+    padding: 0;
     background-color: #FFF;
+    position: relative;
 }
 
 #main .row .column:last-child {
     padding: 0;
 }
 
+#main .row:last-child {
+    padding-bottom: 20px;
+}
+
 .intro {
     padding: 30px;
-    font-size: 2em;
+    font-size: 1.4em;
 }
 
 .intro ul {
@@ -427,8 +434,12 @@ img {
 }
 
 .intro li {
-    font-size: .8em;
+    font-size: .9em;
+    font-style: italic;
+    line-height: 2em;
+    /* color: blue; */
 }
+
 
 .image-wrap {
     width: 50%;
@@ -438,11 +449,11 @@ img {
 
 #drag-icon {
     background: url("../images/spin-icon.png") no-repeat center center;
-    width: 50%;
+    width: 58.33333%;
     height: 100%;
     position: absolute;
     top: 0;
-    left: 25%;
+    right: 0;
     pointer-events: none;
 }
 
@@ -463,12 +474,66 @@ img {
     height: 100%;
 }
 
+/* Products */
+#main .row.products-nav {
+    padding: 0;
+    height: 25px;
+}
+
+#btn-group {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.btn {
+    background-color: #CCC;
+    margin: 1px;
+    padding: 5px 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    line-height: 0.8em;
+    color: #333;
+    border: none;
+}
+
+.btn:hover,
+.btn.active {
+    background-color: #999;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.product {
+    display: none;
+    animation: fadeEffect 1s;
+}
+
+.active {
+    display: inline-block;
+}
+
 .credit {
     color: #666;
     font-style: italic;
     position: absolute;
     bottom: 10px;
     right: 20px;
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /*------------------------------------------------------------------------------------------*/
@@ -508,10 +573,11 @@ img {
     margin: 0 5px 0 5px;
 }
 
+
 /*------------------------------------------------------------------------------------------*/
 
 
-/* 10. Responsive Styling */
+/* 10. Responsive Styling JustLanded */
 
 
 /*------------------------------------------------------------------------------------------*/
