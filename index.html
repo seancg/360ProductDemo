@@ -114,7 +114,7 @@
                 <div id="image-wrap1"
                      class="image-wrap column seven">
                     <div class="image-container">
-                        <iframe style="border:0px; max-width: 100%;"
+                        <iframe id="iframe1" style="border:0px; max-width: 100%;"
                                 marginheight="0"
                                 marginwidth="0"
                                 scrolling="no"
@@ -146,7 +146,7 @@
                 <div id="image-wrap2"
                      class="image-wrap column seven">
                     <div class="image-container">
-                        <iframe style="border:0px; max-width: 100%;"
+                        <iframe id="iframe2" style="border:0px; max-width: 100%;"
                                 marginheight="0"
                                 marginwidth="0"
                                 scrolling="no"
@@ -178,7 +178,7 @@
                 <div id="image-wrap3"
                      class="image-wrap column seven">
                     <div class="image-container">
-                        <iframe style="border:0px; max-width: 100%;"
+                        <iframe id="iframe3" style="border:0px; max-width: 100%;"
                                 marginheight="0"
                                 marginwidth="0"
                                 scrolling="no"
@@ -210,7 +210,7 @@
                 <div id="image-wrap4"
                      class="image-wrap column seven">
                     <div class="image-container">
-                        <iframe style="border:0px; max-width: 100%;"
+                        <iframe id="iframe4" style="border:0px; max-width: 100%;"
                                 marginheight="0"
                                 marginwidth="0"
                                 scrolling="no"
@@ -242,7 +242,7 @@
                 <div id="image-wrap5"
                      class="image-wrap column seven">
                     <div class="image-container">
-                        <iframe style="border:0px; max-width: 100%;"
+                        <iframe id="iframe5" style="border:0px; max-width: 100%;"
                                 marginheight="0"
                                 marginwidth="0"
                                 scrolling="no"
@@ -322,6 +322,17 @@
 
                 activeProduct.style.display = "block";
                 evt.target.classList.add('active');
+
+                // debugger;
+
+                // Active iframe
+                var activeIframe = 'iframe' + productNum;
+                var activeIframeEl = document.getElementById(activeIframe);
+                activeIframeEl.contentWindow.postMessage('loadProduct', '*');
+
+                // if (isZooming) {
+                //     dragIcon.classList.add('disabled');
+                // }
             }
         };
     </script>

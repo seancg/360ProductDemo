@@ -421,7 +421,7 @@ img {
 }
 
 #main .row:last-child {
-    padding-bottom: 20px;
+    padding-bottom: 40px;
 }
 
 .intro {
@@ -525,7 +525,7 @@ img {
     color: #666;
     font-style: italic;
     position: absolute;
-    bottom: 10px;
+    bottom: -20px;
     right: 20px;
 }
 
@@ -607,6 +607,10 @@ img {
     h2,
     h3 {
         text-align: center;
+    }
+
+    #drag-icon {
+        top: -25%;
     }
 }
 
@@ -722,6 +726,11 @@ img {
 
     #main .row {
         padding: 0;
+    }
+
+    #drag-icon {
+        top: 25%;
+        right: 25%;
     }
 }
 
