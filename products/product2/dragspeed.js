@@ -1,0 +1,1 @@
+var sensitivity = 5;
