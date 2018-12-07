@@ -61,32 +61,29 @@
 <body>
     <!--Start of Landing Page Header-->
     <header id="header">
-        <div class="row">
-            <!--Start of Header Title-->
-            <div id="title">
-                <h3>INTERACTIVE</h3>
-                <h1>360° PRODUCT MODELS</h1>
-            </div>
-            <!--End of Header Title-->
-            <!--Start of Header Logo-->
-            <div id="logo"
-                 class="eight columns">
-                <a href="http://www.atplearningpromo.com/">
-                    <img src="images/atpls-logo.png"
-                         alt="ATP"
-                         title="ATP Learning Solutions"
-                         width="158">
-                </a>
-            </div>
-            <!--End of Header Logo-->
+        <!--Start of Header Title-->
+        <div id="title">
+            <h3>INTERACTIVE</h3>
+            <h1>360° PRODUCT MODELS</h1>
         </div>
+        <!--End of Header Title-->
+        <!--Start of Header Logo-->
+        <div id="logo">
+            <a href="http://www.atplearningpromo.com/">
+                <img src="images/atpls-logo.png"
+                     alt="ATP"
+                     title="ATP Learning Solutions"
+                     width="158">
+            </a>
+        </div>
+        <!--End of Header Logo-->
     </header>
     <!--End of Landing Page Header-->
 
     <!--Start of Main Content-->
     <section id="main"
              role="main">
-        <div class="row products-nav">
+        <div class="main-row products-nav">
             <div id="btn-group">
                 <button class="btn active">1</button>
                 <button class="btn">2</button>
@@ -95,8 +92,8 @@
                 <button class="btn">5</button>
             </div>
         </div>
-        <div class="row">
-            <div class="intro column five">
+        <div class="main-row products">
+            <div class="intro">
                 <h3>Quality training is no longer restricted to the classroom...</h3>
                 <p>Interactive 360° models allow any product to be included as an integral part of a quality
                     training
@@ -112,7 +109,7 @@
             <div id="product1"
                  class="product active">
                 <div id="image-wrap1"
-                     class="image-wrap column seven">
+                     class="image-wrap">
                     <div class="image-container">
                         <iframe id="iframe1"
                                 style="border:0px; max-width: 100%;"
@@ -127,12 +124,13 @@
                         </iframe>
                     </div>
                     <div class="credit">Klein Tools</div>
+                    <div id="drag-icon"></div>
                 </div>
             </div>
             <div id="product2"
                  class="product">
                 <div id="image-wrap2"
-                     class="image-wrap column seven">
+                     class="image-wrap">
                     <div class="image-container">
                         <iframe id="iframe2"
                                 style="border:0px; max-width: 100%;"
@@ -147,12 +145,13 @@
                         </iframe>
                     </div>
                     <div class="credit">ANVIL International</div>
+                    <div id="drag-icon"></div>
                 </div>
             </div>
             <div id="product3"
                  class="product">
                 <div id="image-wrap3"
-                     class="image-wrap column seven">
+                     class="image-wrap">
                     <div class="image-container">
                         <iframe id="iframe3"
                                 style="border:0px; max-width: 100%;"
@@ -167,12 +166,13 @@
                         </iframe>
                     </div>
                     <div class="credit">Legrand</div>
+                    <div id="drag-icon"></div>
                 </div>
             </div>
             <div id="product4"
                  class="product">
                 <div id="image-wrap4"
-                     class="image-wrap column seven">
+                     class="image-wrap">
                     <div class="image-container">
                         <iframe id="iframe4"
                                 style="border:0px; max-width: 100%;"
@@ -187,12 +187,13 @@
                         </iframe>
                     </div>
                     <div class="credit">Milwaukee Tool</div>
+                    <div id="drag-icon"></div>
                 </div>
             </div>
             <div id="product5"
                  class="product">
                 <div id="image-wrap5"
-                     class="image-wrap column seven">
+                     class="image-wrap">
                     <div class="image-container">
                         <iframe id="iframe5"
                                 style="border:0px; max-width: 100%;"
@@ -207,24 +208,22 @@
                         </iframe>
                     </div>
                     <div class="credit">Buckingham</div>
+                    <div id="drag-icon"></div>
                 </div>
             </div>
 
-            <div id="drag-icon"></div>
         </div>
     </section>
     <!--End of Main Content-->
     <!--Start of Landing Page Footer-->
-    <div class="row">
-        <footer role="contentinfo">
-            <div id="page_footer">
-                <p>
-                    &copy; 2018 by ATP Learning Solutions
-                    <br> All rights reserved.
-                </p>
-            </div>
-        </footer>
-    </div>
+    <footer role="contentinfo">
+        <div id="page_footer">
+            <p>
+                &copy; 2018 by ATP Learning Solutions
+                <br> All rights reserved.
+            </p>
+        </div>
+    </footer>
     <!--End of Landing Page Footer-->
 
     <!-- Included JS Files -->
@@ -236,6 +235,7 @@
             var endEvent = isTouchSupported ? 'touchend' : 'mouseout';
 
             var dragIcon = document.getElementById('drag-icon');
+            let isZooming = false;
 
             // Product content toggling
             var productBtns = document.getElementById('btn-group');
@@ -250,7 +250,6 @@
 
             function openProduct(evt) {
                 // console.log(`openProduct(${evt.target.innerHTML})`);
-                dragIcon.classList.remove('disabled');
 
                 var productNum = evt.target.innerHTML;
                 var product = 'product' + productNum;
@@ -265,14 +264,6 @@
                     btns[i].classList.remove('active');
                 }
 
-                activeProductImagewrap.addEventListener(startEvent, function () {
-                    dragIcon.style.display = "none";
-                }, false);
-
-                activeProductImagewrap.addEventListener(endEvent, function () {
-                    dragIcon.style.display = "block";
-                }, false);
-
                 activeProduct.style.display = "block";
                 evt.target.classList.add('active');
 
@@ -282,11 +273,43 @@
                 var activeIframe = 'iframe' + productNum;
                 var activeIframeEl = document.getElementById(activeIframe);
                 activeIframeEl.contentWindow.postMessage('loadProduct', '*');
-
-                // if (isZooming) {
-                //     dragIcon.classList.add('disabled');
-                // }
             }
+
+            // addEventListener support for IE8
+            function bindEvent(element, eventName, eventHandler) {
+                if (element.addEventListener) {
+                    element.addEventListener(eventName, eventHandler, false);
+                } else if (element.attachEvent) {
+                    element.attachEvent('on' + eventName, eventHandler);
+                }
+            }
+
+            // Listen to messages from parent window
+            bindEvent(window, 'message', function (e) {
+                let message = e.data;
+
+                switch (message) {
+                    case 'isZooming':
+                        isZooming = true;
+                        dragIcon.classList.add('disabled');
+                        break;
+
+                    case 'notZooming':
+                        isZooming = false;
+                        dragIcon.classList.remove('disabled');
+                        break;
+
+                    case 'disableIcon':
+                        dragIcon.classList.add('disabled');
+                        break;
+
+                    default:
+                        if (!isZooming) {
+                            dragIcon.classList.remove('disabled');
+                        }
+                        return;
+                }
+            });
         };
     </script>
 
