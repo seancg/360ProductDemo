@@ -149,7 +149,7 @@ img {
 img,
 object,
 embed {
-    max-width: 100%;
+    /* max-width: 100%; */
 }
 
 img {
@@ -170,13 +170,13 @@ img {
 #header {
     height: 150px;
     background-color: #333;
-    padding: 40px 0;
+    padding: 40px 20px;
     margin: 0;
     position: relative;
 }
 
 .header--content {
-    max-width: 90%;
+    max-width: 1481px;
     margin: 0 auto;
 }
 
@@ -232,7 +232,7 @@ img {
 
 .main-row {
     width: 100%;
-    max-width: 90%;
+    max-width: 1481px;
     margin: 0 auto;
     padding: 0;
     background-color: #FFF;
@@ -260,6 +260,7 @@ img {
 .intro,
 .products--container {
     width: 100%;
+    max-width: 800px;
     height: 100%;
     position: relative;
     flex: 0 1 50%;
@@ -282,6 +283,7 @@ img {
 
 .image-wrap {
     width: 100%;
+    max-height: 600px;
     /* max-width: 800px; */
     margin: 0 auto;
 }
@@ -417,6 +419,10 @@ img {
     margin: 0 5px 0 5px;
 }
 
+img {
+    max-height: auto !important;
+    max-width: auto !important;
+}
 
 /*------------------------------------------------------------------------------------------*/
 
@@ -425,10 +431,17 @@ img {
 
 
 /*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 980px) {
+    #header {
+        padding: 20px;
+    }
+}
+
 @media screen and (min-width: 1240px) {
     .intro {
         flex: 0 1 40%;
     }
+
     .products--container {
         flex: 0 1 60%;
     }
@@ -451,10 +464,6 @@ img {
     /*Quotes*/
     blockquote {
         margin-bottom: 25px;
-    }
-
-    #header {
-        padding: 20px;
     }
 
     .header--content {
