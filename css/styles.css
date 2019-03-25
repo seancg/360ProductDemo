@@ -13,6 +13,7 @@ body {
     margin: 0;
     padding: 0;
     min-width: 290px;
+    height: 100%;
 }
 
 *,
@@ -169,13 +170,13 @@ img {
 #header {
     height: 150px;
     background-color: #333;
-    padding: 40px;
+    padding: 40px 0;
     margin: 0;
     position: relative;
 }
 
 .header--content {
-    max-width: 940px;
+    max-width: 90%;
     margin: 0 auto;
 }
 
@@ -231,7 +232,7 @@ img {
 
 .main-row {
     width: 100%;
-    max-width: 940px;
+    max-width: 90%;
     margin: 0 auto;
     padding: 0;
     background-color: #FFF;
@@ -239,7 +240,7 @@ img {
 }
 
 .main-row:last-child {
-    padding-bottom: 20px;
+    padding-bottom: 2.5em;
 }
 
 /* Products */
@@ -281,7 +282,7 @@ img {
 
 .image-wrap {
     width: 100%;
-    max-width: 800px;
+    /* max-width: 800px; */
     margin: 0 auto;
 }
 
@@ -361,7 +362,7 @@ img {
     font-style: italic;
     position: absolute;
     bottom: -20px;
-    right: 20px;
+    right: 10px;
 }
 
 @keyframes fadeEffect {
@@ -383,13 +384,18 @@ img {
 /*------------------------------------------------------------------------------------------*/
 
 #page_footer {
+    height: 60px;
+    padding: 15px 0;
     text-align: center;
     clear: both;
     font-size: 80%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #page_footer p {
-    margin: 15px 0 20px 0;
+    /* margin: 15px 0; */
 }
 
 #page_footer,
@@ -419,16 +425,18 @@ img {
 
 
 /*------------------------------------------------------------------------------------------*/
-
-@media screen and (min-width: 761px) and (max-width: 1005px) {
-
-    h2,
-    h3 {
-        text-align: center;
+@media screen and (min-width: 1240px) {
+    .intro {
+        flex: 0 1 40%;
+    }
+    .products--container {
+        flex: 0 1 60%;
     }
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (min-width: 981px) and (max-width: 1005px) {}
+
+@media screen and (max-width: 980px) {
 
     h2,
     h3 {
@@ -447,6 +455,10 @@ img {
 
     #header {
         padding: 20px;
+    }
+
+    .header--content {
+        max-width: 100%;
     }
 
     #logo {
@@ -473,6 +485,19 @@ img {
 
     .products {
         display: block;
+    }
+
+    .main-row {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    .intro {
+        padding: 20px 0 0 0;
+    }
+
+    #btn-group {
+        right: 20px;
     }
 }
 
