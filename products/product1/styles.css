@@ -214,13 +214,13 @@ img {
 }
 
 #sliderContainer {
-    width: 150px;
+    width: 160px;
     height: 25px;
     background-color: rgba(200, 200, 200, .5);
     padding: 0px;
     border-radius: 5px;
     color: gray;
-    flex: 0 1 150px;
+    flex: 0 1 160px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -235,7 +235,8 @@ img {
 #slider-horizontal {
     height: 10px !important;
     margin: 0 !important;
-    flex: 0 1 85%;
+    flex: 0 1 65%;
+    left: 0;
 }
 
 .minus {
@@ -249,7 +250,7 @@ img {
 
 .minus,
 .plus {
-    display: none;
+    /* display: none; */
 }
 
 .ui-slider,
