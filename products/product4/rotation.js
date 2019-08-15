@@ -10,15 +10,16 @@
 
 $(window).load(function () {
     jQuery(document).ready(function ($) {
-        var messageForExitZoom = "<button type='button' id='exitZoomBtn' class='btn btn-warning safety'>Return to 360 Mode</button>";
+        var messageForExitZoom = "<button type='button' class='btn btn-warning safety'>Return to 360 Mode</button>";
         var isTopWindow = false;
+        var fullscreenControl = $("#fullscreen");
         var hotspotCanvas = $("#hotspotcanvas");
         var playPauseControl = $("#play");
         var prevControl = $("#prev");
         var nextControl = $("#next");
         var zoomIn = $("#zoomin");
+        var zoomCheck = $("#zoomcheck");
         var zoomContainer = $("#zoomContainer");
-
         var draggableContainer = $("#draggableContainer");
         var topContainer = $("#topContainer");
         var imageContainer = $("#imageContainer");
@@ -156,7 +157,6 @@ $(window).load(function () {
         });
 
         hotspotCanvas.on("mousedown touchstart", function (e) {
-            sendMessage('disableIcon');
             if (isPlaying) {
                 wasPlaying = true;
                 doPause();
@@ -460,6 +460,8 @@ $(window).load(function () {
                 } else {
                     console.log("stop");
                 }
+
+
             }
         });
 
@@ -485,8 +487,6 @@ $(window).load(function () {
             }, false);
         }
 
-
-
         $(document).on('click', '#exitZoomBtn', function (e) {
             console.log('exitZoom');
             if (isPlaying) {
@@ -501,6 +501,28 @@ $(window).load(function () {
                 exitZoom();
             }
         });
+
+        if (document.getElementById("zoomin")) {
+            document.getElementById("zoomin").addEventListener('click', function (e) {
+                if (isPlaying) {
+                    doPause();
+                }
+
+                if (!isZooming) {
+                    zoomIn.removeClass("zoomin");
+                    zoomIn.addClass("zoomout");
+
+                    valueZoom = maxZoom;
+                    doZoom();
+                } else {
+                    zoomIn.removeClass("zoomout");
+                    zoomIn.addClass("zoomin");
+
+                    valueZoom = minZoom;
+                    exitZoom();
+                }
+            }, false);
+        }
 
         if (document.getElementById("fullscreen")) {
             document.getElementById("fullscreen").addEventListener('click', function (e) {
@@ -548,6 +570,7 @@ $(window).load(function () {
         }
 
         bindEvent(window, 'message', function (e) {
+            console.log(e.data);
             // console.log(`parent message: ${isZooming}`);
             // if (isZooming) {
             //     dragIcon.classList.add('disabled');
@@ -564,13 +587,13 @@ $(window).load(function () {
                     //scroll down
                     valueZoom -= stepZoom;
                     valueZoom = (valueZoom < minZoom) ? minZoom : valueZoom;
-                    console.log(`valueZoom=${valueZoom}, ${valueZoom*100}`);
+                    console.log('valueZoom=' + valueZoom + ', ' + valueZoom*100);
                     slider.slider("value", (valueZoom - 1) * 100);
                 } else {
                     //scroll up
                     valueZoom += stepZoom;
                     valueZoom = (valueZoom > maxZoom) ? maxZoom : valueZoom;
-                    console.log(`valueZoom=${valueZoom}, ${valueZoom*100}`);
+                    console.log('valueZoom=' + valueZoom + ', ' + valueZoom*100);
                     slider.slider("value", (valueZoom - 1) * 100);
                 }
 
@@ -650,17 +673,17 @@ $(window).load(function () {
             return false;
         });
 
-
         var doZoom = function () {
             isZooming = true;
             sendMessage('isZooming');
 
+            zoomIn.removeClass("zoomin");
+            zoomIn.addClass("zoomout");
             zoomIn.html(messageForExitZoom);
 
             doPause();
 
             valueZoom = Math.round(valueZoom * 10) / 10;
-            console.log(`doZoom(): valueZoom=${valueZoom}`);
 
             if (deepZoom === 1) {
                 if (isTopWindow) {
@@ -712,6 +735,8 @@ $(window).load(function () {
 
             zoomIn.html("");
             slider.slider("value", 0.5);
+            zoomIn.removeClass("zoomout");
+            zoomIn.addClass("zoomin");
 
             draggableContainer.css("background-image", "none");
             draggableContainer.css("display", "none");
@@ -914,18 +939,7 @@ $(window).load(function () {
                     }
                 }
             }
-
-            /*if ((hotspotX[currentImage] !== -1) && (hotspotY[currentImage] !== -1))
-            {
-                var img = new Image();
-                img.onload = function()
-                {
-                    context.drawImage(img, hotspotX[currentImage]-12, hotspotY[currentImage]-12, 24, 24);
-                }
-
-                img.src = hotspotImage[currentImage];
-            }*/
-        }
+        };
 
         var doPlay = function () {
             playPauseControl.attr("class", "pause");
@@ -936,7 +950,7 @@ $(window).load(function () {
             } else {
                 animation = setInterval(displayPreviousFrame, playSpeed);
             }
-        }
+        };
 
         var doPause = function () {
             playPauseControl.attr("class", "play");
@@ -948,33 +962,18 @@ $(window).load(function () {
             }
 
             clearInterval(animation);
-        }
+        };
 
         if (isPlaying) {
             clearInterval(animation);
             doPlay();
         }
 
-        // Communicate with Parent container
-        // addEventListener support for IE8
-        function bindEvent(element, eventName, eventHandler) {
-            if (element.addEventListener) {
-                element.addEventListener(eventName, eventHandler, false);
-            } else if (element.attachEvent) {
-                element.attachEvent('on' + eventName, eventHandler);
-            }
-        }
         // Send a message to the parent
         var sendMessage = function (msg) {
             // Make sure you are sending a string, and to stringify JSON
             window.parent.postMessage(msg, '*');
         };
-
-        // Listen to messages from parent window
-        bindEvent(window, 'message', function (e) {
-            console.log(e.data);
-        });
-
 
     });
 });
