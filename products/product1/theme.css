@@ -29,7 +29,25 @@
     background-image: url("toolbar/right-arrow.png");
 }
 
-.zoomin
+#controllerContainer{
+    width: 100%;
+}
+
+.btn{
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.btn-warning{
+    padding: 7px;
+    color: #000;
+    background-color: #e0e0e0;
+    border-color: #eea236;
+}
+    
+
+
+/*.zoomin
 {
     background-image: url("toolbar/zoom-in.png");
 }
@@ -37,6 +55,12 @@
 .zoomout
 {
     background-image: url("toolbar/zoom-out.png");
+}*/
+
+.zoomout
+{
+    cursor: pointer;
+    text-align:center;
 }
 
 #fullscreen
@@ -57,7 +81,7 @@
     transition: all 150ms ease-out;
 }
 
-#play:hover, #prev:hover, #next:hover, #fullscreen:hover
+#play:hover, #prev:hover, #next:hover, #zoomin:hover, #fullscreen:hover
 {
     -webkit-transform: scale(1.2, 1.2);
     -moz-transform: scale(1.2, 1.2);
@@ -66,7 +90,7 @@
     transform: scale(1.2, 1.2);
 }
 
-#play:active, #prev:active, #next:active, #fullscreen:active
+#play:active, #prev:active, #next:active, #zoomin:active, #fullscreen:active
 {
     opacity: 0.5;
 }
