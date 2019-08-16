@@ -461,7 +461,6 @@ $(window).load(function () {
                     console.log("stop");
                 }
 
-
             }
         });
 
@@ -575,6 +574,10 @@ $(window).load(function () {
             // if (isZooming) {
             //     dragIcon.classList.add('disabled');
             // }
+
+            if (e.data == "loadProduct") {
+                displayHotspot();
+            }
         });
 
         //Firefox
@@ -974,6 +977,8 @@ $(window).load(function () {
             // Make sure you are sending a string, and to stringify JSON
             window.parent.postMessage(msg, '*');
         };
+
+        displayHotspot();
 
     });
 });
