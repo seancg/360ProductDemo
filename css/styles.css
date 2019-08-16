@@ -1,20 +1,148 @@
 /*------------------------------------------------------------------------------------------*/
-
-
-/* 1. Defaults & Reset of specific styles across browsers */
-
-
+/* 1. Reset of specific styles across browsers */
 /*------------------------------------------------------------------------------------------*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
 
 body {
     background: #696969;
     font-family: Arial, Verdana, Helvetica, sans-serif;
-	font-size: 13px;
+    font-size: 16px;
+    line-height: 1.5em;
     margin: 0;
     padding: 0;
     min-width: 290px;
     height: 100%;
 }
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* Global styles */
+/*------------------------------------------------------------------------------------------*/
 
 *,
 *:before,
@@ -24,107 +152,38 @@ body {
     box-sizing: border-box;
 }
 
-ul,
-li,
-li p {
-    margin: 0;
-    padding: 0;
-
-    /* list-style: none; */
-}
-
-p,
-li,
-blockquote {
-    line-height: 1.4em;
-    margin: 0;
-}
-
-a img {
-    border: none;
-}
-
-iframe {
-    border: 0;
-}
-
-
-/*------------------------------------------------------------------------------------------*/
-
-
-/* 2. Global elements used throughout the landing page */
-
-
-/*------------------------------------------------------------------------------------------*/
-
-section {
-    display: block;
-}
-
 article section,
 .inner {
     margin: 0 auto;
     overflow: hidden;
 }
 
-
-/*------------------------------------------------------------------------------------------*/
-
-
-/* 3. Styles used for fonts and headings */
-
-
-/*------------------------------------------------------------------------------------------*/
-
-
-/* 3.1 Fonts */
-
-h1,
-h2,
-h3,
-h5 {
-    font-weight: normal;
-}
-
-h1 span,
-h2 span,
-h3 span {
-    font-weight: 700;
-}
-
 h1 {
     font-family: 'Roboto', serif;
-    font-size: 280%;
-    color: #dd4632;
-    margin: 0;
+    font-size: 2.5em;
 }
 
 h2 {
     font-family: 'Roboto', serif;
-    font-size: 220%;
-    color: #dd4632;
-    margin: 0 0 20px 0;
-}
-
-h3 {
-    font-family: 'Roboto', serif;
-    font-size: 140%;
+    font-size: 1.5em;
+    line-height: 1.3em;
     color: #999;
     margin: 0px 0 25px 0;
 }
 
-h3.kt {
-    color: #f18b2f;
-    margin: 0px 0 15px 0;
+h3 {
+    font-family: 'Roboto', serif;
+    font-size: 1.5em;
+    color: #999;
+    margin: 0px 0 25px 0;
 }
 
 h4 {
     font-family: 'Roboto', serif;
-    font-size: 120%;
+    font-size: 1em;
     font-weight: 700;
     margin: 0 0 5px 0;
 }
-
 
 /* 3.2 Headings */
 
@@ -133,37 +192,12 @@ h4 {
     float: left;
 }
 
-
-/*------------------------------------------------------------------------------------------*/
-
-
-/* 4. Content blocks used to position content */
-
-
-/*------------------------------------------------------------------------------------------*/
-
 img {
     height: auto;
-}
-
-img,
-object,
-embed {
-    /* max-width: 100%; */
-}
-
-img {
     -ms-interpolation-mode: bicubic;
+    max-height: auto !important;
+    max-width: auto !important;
 }
-
-/*------------------------------------------------------------------------------------------*/
-
-
-/* 5. Landing page header and banner */
-
-
-/*------------------------------------------------------------------------------------------*/
-
 
 /* 5.1 Header */
 
@@ -195,11 +229,11 @@ img {
 }
 
 #title h1 {
-    font-size: 4em;
+    font-size: 3.25em;
 }
 
 #title h3 {
-    font-size: 2em;
+    font-size: 1.7em;
 }
 
 #logo {
@@ -268,11 +302,8 @@ img {
     flex: 0 1 50%;
 }
 
-.products--container {}
-
 .intro {
     padding: 30px 30px 0 0;
-    font-size: 1.3em;
 }
 
 .intro ul {
@@ -280,9 +311,9 @@ img {
 }
 
 .intro li {
-    font-size: .9em;
     font-style: italic;
     line-height: 1.8em;
+    list-style: disc;
 }
 
 .image-wrap {
@@ -336,7 +367,7 @@ img {
     margin: 1px;
     padding: 5px 7px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2em;
+    font-size: 1em;
     line-height: 0.8em;
     color: #333;
     border: none;
@@ -370,9 +401,10 @@ img {
 
 .credit {
     color: #666;
+    font-size: .8em;
     font-style: italic;
     position: absolute;
-    bottom: -20px;
+    bottom: -25px;
     right: 10px;
 }
 
@@ -389,7 +421,7 @@ img {
 /*------------------------------------------------------------------------------------------*/
 
 
-/* 8. Landing page footer */
+/* Footer */
 
 
 /*------------------------------------------------------------------------------------------*/
@@ -399,14 +431,11 @@ img {
     padding: 15px 0;
     text-align: center;
     clear: both;
-    font-size: 80%;
+    font-size: .65em;
+    line-height: 1.3em;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-}
-
-#page_footer p {
-    /* margin: 15px 0; */
 }
 
 #page_footer,
@@ -419,46 +448,20 @@ img {
     color: #666;
 }
 
-#page_footer ul {
-    margin: 0 auto;
-}
-
-#page_footer li {
-    display: inline;
-    margin: 0 5px 0 5px;
-}
-
-img {
-    max-height: auto !important;
-    max-width: auto !important;
-}
-
 /*------------------------------------------------------------------------------------------*/
 
 
-/* 10. Responsive Styling JustLanded */
+/* Responsive Styling */
 
 
 /*------------------------------------------------------------------------------------------*/
-@media screen and (max-width: 980px) {
-    #header {
-        padding: 20px;
-    }
-}
-
 @media screen and (min-width: 1240px) {
-    .intro {
-        /* flex: 0 1 40%; */
-    }
-
     .products--container {
         flex: 0 1 60%;
     }
 }
 
-@media screen and (min-width: 981px) and (max-width: 1005px) {}
-
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 811px) {
 
     h2,
     h3 {
@@ -473,6 +476,10 @@ img {
     /*Quotes*/
     blockquote {
         margin-bottom: 25px;
+    }
+
+    #header {
+        padding: 20px;
     }
 
     .header--content {
@@ -494,13 +501,14 @@ img {
     }
 
     #title h1 {
-        font-size: 3em;
+        font-size: 2.5em;
     }
 
     #title h3 {
-        font-size: 1.5em;
+        font-size: 1.3em;
     }
 
+    #main,
     .products {
         display: block;
     }
@@ -527,15 +535,15 @@ img {
     }
 
     #title h1 {
-        font-size: 2.2em;
+        font-size: 1.7em;
     }
 
     #title h3 {
-        font-size: 1em;
+        font-size: .8em;
     }
 
     .intro {
-        font-size: 1.1em;
+        /* font-size: 1.1em; */
         padding-bottom: 0;
     }
 

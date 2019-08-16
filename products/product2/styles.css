@@ -33,6 +33,13 @@ img {
     transform: translateY(-50%);
 }
 
+@supports (-webkit-overflow-scrolling: touch) {
+    /* CSS specific to iOS devices */
+    img {
+        top: 25% !important;
+    }
+}
+
 #topContainer {
     position: absolute;
     top: 0;
