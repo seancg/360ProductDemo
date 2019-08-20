@@ -15,9 +15,9 @@
               type="text/css"
               href="theme.css">
         <link rel="stylesheet"
-              href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+              type="text/css"
+              href="zoom-slider.css">
         <script src="jquery-2.1.1.min.js"></script>
-        <script src="jquery-ui.min.js"></script>
         <script type="text/javascript"
                 src="playtype.js"></script>
         <script type="text/javascript"
@@ -39,11 +39,9 @@
         <script type="text/javascript"
                 src="largesize.js"></script>
         <script type="text/javascript"
-                src="deepzoom.js"></script>
+                src="zoom-slider.js"></script>
         <script type="text/javascript"
                 src="rotation.js"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -81,10 +79,20 @@
                 </div>
                 <div id="controllerContainer">
                         <div id="zoomin"></div>
-                        <div id="sliderContainer">
-                                <span class="minus">-</span>
-                                <div id="slider-horizontal"></div>
-                                <span class="plus">+</span>
+                        <div id="zoom-slider-container">
+                                <div class="zoom-slider zoom-slider-is-hoverable">
+                                        <span class="zoom-slider-slide-area">
+                                                <span class="zoom-slider-minus">-</span>
+                                                <span class="zoom-slider-slide">
+                                                        <div class="zoom-slider-slide-groove">
+                                                                <div class="zoom-slider-slider">
+                                                                        <span class="zoom-slider-handle"></span>
+                                                                </div>
+                                                        </div>
+                                                </span>
+                                                <span class="zoom-slider-plus">+</span>
+                                        </span>
+                                </div>
                         </div>
                 </div>
         </div>
