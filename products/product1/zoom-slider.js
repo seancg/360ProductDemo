@@ -4,6 +4,9 @@ if ($) $(function () {
     var messageForExitZoom = "<button type='button' class='btn btn-warning safety'>Return to 360 Mode</button>";
     var controllerContainer = $("#controllerContainer");
 
+    var imageContainer = $("#imageContainer");
+    var images = imageContainer.find("img");
+
     var $zoomSlider = $('.zoom-slider');
     var timeout = false;
     var lastX = false;
@@ -220,9 +223,6 @@ if ($) $(function () {
 
     if (document.getElementById("zoomin")) {
         document.getElementById("zoomin").addEventListener('click', function (e) {
-            if (isPlaying) {
-                doPause();
-            }
 
             if (!isZooming) {
                 zoomIn.removeClass("zoomin");
@@ -251,13 +251,13 @@ if ($) $(function () {
                 valueZoom -= stepZoom;
                 valueZoom = (valueZoom < minZoom) ? minZoom : valueZoom;
                 console.log('valueZoom=' + valueZoom + ', ' + valueZoom * 100);
-                slider.slider("value", (valueZoom - 1) * 100);
+                zsMoveSlider((valueZoom - 1) * 100);
             } else {
                 //scroll up
                 valueZoom += stepZoom;
                 valueZoom = (valueZoom > maxZoom) ? maxZoom : valueZoom;
                 console.log('valueZoom=' + valueZoom + ', ' + valueZoom * 100);
-                slider.slider("value", (valueZoom - 1) * 100);
+                zsMoveSlider((valueZoom - 1) * 100);
             }
 
             if ((valueZoom > minZoom) && (valueZoom < maxZoom)) {
@@ -283,12 +283,12 @@ if ($) $(function () {
                 //scroll down
                 valueZoom -= stepZoom;
                 valueZoom = (valueZoom < minZoom) ? minZoom : valueZoom;
-                slider.slider("value", (valueZoom - 1) * 100);
+                zsMoveSlider((valueZoom - 1) * 100);
             } else {
                 //scroll up
                 valueZoom += stepZoom;
                 valueZoom = (valueZoom > maxZoom) ? maxZoom : valueZoom;
-                slider.slider("value", (valueZoom - 1) * 100);
+                zsMoveSlider((valueZoom - 1) * 100);
             }
 
             if ((valueZoom > minZoom) && (valueZoom < maxZoom)) {
@@ -362,8 +362,6 @@ if ($) $(function () {
         zoomIn.removeClass("zoomin");
         zoomIn.addClass("zoomout");
         zoomIn.html(messageForExitZoom);
-
-        doPause();
 
         valueZoom = Math.round(valueZoom * 10) / 10;
 
@@ -493,6 +491,19 @@ if ($) $(function () {
         return false;
     };
 
+    var zsMoveSlider = function (valueZoom) {
+        console.log(`zsMoveSlider(valueZoom:${valueZoom})`);
+
+        v = valueZoom * 2;
+        if (v < 0) v = 0;
+        if (v > 200) v = 200;
+        $(this).find('.zoom-slider-slider').css('left', v);
+
+        event.stopPropagation();
+        event.preventDefault();
+        return false;
+    };
+
     var current = false;
 
     var zsMouseDown = function (event) {
@@ -523,7 +534,13 @@ if ($) $(function () {
     var zsMouseMove = function (event) {
         if (!current) return;
         return zsUpdateSlider(current, event, false);
-    }
+    };
+
+    // Send a message to the parent
+    var sendMessage = function (msg) {
+        // Make sure you are sending a string, and to stringify JSON
+        window.parent.postMessage(msg, '*');
+    };
 
     $('.zoom-slider-slide-area').bind('mousedown touchstart', zsMouseDown);
     $(document.body).bind('mouseup touchend touchcancel', zsMouseUp);

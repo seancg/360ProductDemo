@@ -186,10 +186,10 @@ img {
     padding: 8px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 }
 #zoomin {
-    width: 100vw !important;
+    /* width: 100vw !important; */
     align-self: flex-start;
 }
 
