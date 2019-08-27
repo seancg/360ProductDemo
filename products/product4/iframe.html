@@ -10,45 +10,15 @@
     <title></title>
     <link rel="stylesheet"
           type="text/css"
-          href="styles.css">
-    <link rel="stylesheet"
-          type="text/css"
-          href="theme.css">
-    <link rel="stylesheet"
-          href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="jquery-2.1.1.min.js"></script>
-    <script src="jquery-ui.min.js"></script>
+          href="bundle.css">
     <script type="text/javascript"
-            src="playtype.js"></script>
-    <script type="text/javascript"
-            src="speed.js"></script>
-    <script type="text/javascript"
-            src="pointerdrag.js"></script>
-    <script type="text/javascript"
-            src="rotationdirection.js"></script>
-    <script type="text/javascript"
-            src="hotspots.js"></script>
-    <script type="text/javascript"
-            src="bounce.js"></script>
-    <script type="text/javascript"
-            src="dragspeed.js"></script>
-    <script type="text/javascript"
-            src="mousezoom.js"></script>
-    <script type="text/javascript"
-            src="maxzoom.js"></script>
-    <script type="text/javascript"
-            src="largesize.js"></script>
-    <script type="text/javascript"
-            src="deepzoom.js"></script>
-    <script type="text/javascript"
-            src="rotation.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            src="bundle.js"></script>
 </head>
 
 <body>
     <div id="topContainer">
         <div id="imageContainer">
+                        <div id="drag-icon" class=""></div>
             <img src="img/milwaukeeTool_M18FUEL1-12MagDrill_2787-22_01.jpg" />
             <img src="img/milwaukeeTool_M18FUEL1-12MagDrill_2787-22_02.jpg" />
             <img src="img/milwaukeeTool_M18FUEL1-12MagDrill_2787-22_03.jpg" />
@@ -80,14 +50,24 @@
             </div>
         </div>
         <div id="controllerContainer">
-                <div id="zoomin"></div>
-                <div id="sliderContainer">
-                    <span class="minus">-</span>
-                    <div id="slider-horizontal"></div>
-                    <span class="plus">+</span>
+                        <div id="zoomin"></div>
+                        <div id="zoom-slider-container">
+                                <div class="zoom-slider zoom-slider-is-hoverable">
+                                        <span class="zoom-slider-slide-area">
+                                                <span class="zoom-slider-minus">-</span>
+                                                <span class="zoom-slider-slide">
+                                                        <div class="zoom-slider-slide-groove">
+                                                                <div class="zoom-slider-slider">
+                                                                        <span class="zoom-slider-handle"></span>
+                                                                </div>
+                                                        </div>
+                                                </span>
+                                                <span class="zoom-slider-plus">+</span>
+                                        </span>
+                                </div>
+                        </div>
                 </div>
-            </div>
         </div>
-    </body>
-    
-    </html>
+</body>
+
+</html>
