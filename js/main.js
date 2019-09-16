@@ -26,8 +26,12 @@ $(document).ready(function (e) {
     $cancelBtn.addEventListener('click', function () {
         hideOverlay('#contact-overlay')
     });
+    
     $submitBtn.addEventListener('click', sendFormMsg);
 
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener('click', openProduct);
+    }
 
     function openProduct(evt) {
         // console.log(`openProduct(${evt.target.innerHTML})`);
